@@ -15,17 +15,22 @@ struct NewItemView: View {
         sortDescriptors: [NSSortDescriptor(keyPath: \Item.datePurchases, ascending: true)],
         animation: .default)
     var items: FetchedResults<Item>
+    @FetchRequest(
+        sortDescriptors: [NSSortDescriptor(keyPath: \Brands.toolBrand, ascending: true)],
+        animation: .default)
+    private var brands: FetchedResults<Brands>
     
+    @StateObject private var viewModel = NewItemViewModel()
+    @State private var showAddSheet = false
     
-    let viewModel = NewItemViewModel()
-    
-    @State private var toolBrand: String = "Craftsman"
+    @State private var toolBrand: String = ""
     @State private var toolType: String = "Hammer"
     @State private var currentlyOwned: Bool = true
     @State private var purashedDate = Date()
+    @State private var presentAlert = false
     
-    let brandType = ["Craftsman", "Black & Decker", "Makita", "Milwaukee Tool", "Dewalt", "Other"]
-    let typesOfTools = ["Hammer", "Chainsaw", "Screwdriver", "Powerwasher", "Other"]
+   let brandType = ["Craftsman", "Black & Decker", "Makita", "Milwaukee Tool", "Dewalt"]
+    let typesOfTools = ["Hammer", "Chainsaw", "Screwdriver", "Powerwasher"]
     
     var body: some View {
         Form {
@@ -33,13 +38,17 @@ struct NewItemView: View {
                 VStack() {
                     Toggle("Purchased", isOn: $currentlyOwned)
                     Divider()
-                    Picker("Brand",
-                           selection: $toolBrand) {
-                        ForEach(brandType, id: \.self) {
-                            Text($0)
+                    //TODO: Figure out what is going on with the picker
+                    Picker("Brand", selection: $toolBrand) {
+                        
+                        ForEach(brands, id: \.brandID) { brand in
+                            
+                            Text(brand.toolBrand ?? "")
+                                
                         }
                         .pickerStyle(.menu)
                     }
+                    
                     Divider()
                     Picker("Type of Tool",
                            selection: $toolType) {
@@ -51,9 +60,13 @@ struct NewItemView: View {
                     Divider()
                     if currentlyOwned {
                         DatePicker("Date Purchased", selection: $purashedDate, displayedComponents: [.date])
-                }
+                    }
                     Spacer()
                 }
+                
+                Button("Add Brand/Type of tool", action: {
+                    presentAlert = true
+                })
                 Button {
                     save(brand: toolBrand,
                          toolType: toolType,
@@ -62,10 +75,40 @@ struct NewItemView: View {
                 } label: {
                     Text("Save")
                 }
+                
+                
+            }
+            
+            .alert("Add Descriptions", isPresented: $presentAlert,
+                   actions: {
+                
+                Button("Yes", role: .none, action: {
+                    showAddSheet = true
+                })
+                Button("Cancel", role: .cancel, action: {
+                    
+                })
+                
+                
+            }, message: {
+                Text("Would you like to Add Brand or Type of tool")
+                
+            })
+            
+            .sheet(isPresented: $showAddSheet) {
+                NavigationView {
+                    AddDetails()
+                        .navigationTitle("Add New Brand")
+                }
             }
         }
+        .navigationBarItems(leading: Button("Cancel") {
+            dismiss()
+        })
         
     }
+    
+    
     private func save(brand: String, toolType: String, datePurached: Date, isOwned: Bool) -> Void {
         
         let newItem = Item(context: viewContext)
@@ -89,8 +132,8 @@ struct NewItemView: View {
     }
 }
 
-struct NewItem_Previews: PreviewProvider {
-    static var previews: some View {
-        NewItemView()
-    }
-}
+//struct NewItem_Previews: PreviewProvider {
+//    static var previews: some View {
+//        NewItemView()
+//    }
+//}

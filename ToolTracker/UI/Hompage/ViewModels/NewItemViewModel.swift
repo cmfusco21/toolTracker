@@ -10,11 +10,12 @@ import SwiftUI
 
 class NewItemViewModel: ObservableObject {
     @Environment(\.managedObjectContext) private var viewContext
-
+    @Environment(\.dismiss) var dismiss
     @FetchRequest(
         sortDescriptors: [NSSortDescriptor(keyPath: \Item.brand, ascending: true)],
         animation: .default)
      var items: FetchedResults<Item>
+     @State var showAlert: Bool = false
     
     init() {}
     

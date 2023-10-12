@@ -23,22 +23,19 @@ enum SortbuyEnum: Int, Codable, CaseIterable {
         }
     }
 }
-// hi
-
-
 
 class HomepageViewModel: ObservableObject {
-
+    
     @Environment(\.managedObjectContext) private var viewContext
     @FetchRequest(
         sortDescriptors: [NSSortDescriptor(keyPath: \Item.datePurchases, ascending: true)],
         animation: .default)
     private var items: FetchedResults<Item>
-
+    
     @Published var isOwned: Bool = true
-   
+    
     init() {
-        
+        performNetworkCall()
     }
     
     func listSelected(isOwned: Bool) {
@@ -47,7 +44,7 @@ class HomepageViewModel: ObservableObject {
     private func deleteItems(offsets: IndexSet) {
         withAnimation {
             offsets.map { items[$0] }.forEach(viewContext.delete)
-
+            
             do {
                 try viewContext.save()
             } catch {

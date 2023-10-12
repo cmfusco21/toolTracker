@@ -7,8 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		2E57ABE92A8B165200D7DEDE /* AddDetails.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E57ABE82A8B165200D7DEDE /* AddDetails.swift */; };
 		2E6600612A7D9F4D00653AA2 /* ToolTrackerApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E6600602A7D9F4D00653AA2 /* ToolTrackerApp.swift */; };
-		2E6600632A7D9F4D00653AA2 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E6600622A7D9F4D00653AA2 /* ContentView.swift */; };
+		2E6600632A7D9F4D00653AA2 /* MainView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E6600622A7D9F4D00653AA2 /* MainView.swift */; };
 		2E6600652A7D9F4E00653AA2 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 2E6600642A7D9F4E00653AA2 /* Assets.xcassets */; };
 		2E6600682A7D9F4E00653AA2 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 2E6600672A7D9F4E00653AA2 /* Preview Assets.xcassets */; };
 		2E66006A2A7D9F4E00653AA2 /* Persistence.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E6600692A7D9F4E00653AA2 /* Persistence.swift */; };
@@ -26,9 +27,10 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		2E57ABE82A8B165200D7DEDE /* AddDetails.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddDetails.swift; sourceTree = "<group>"; };
 		2E66005D2A7D9F4D00653AA2 /* ToolTracker.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ToolTracker.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		2E6600602A7D9F4D00653AA2 /* ToolTrackerApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToolTrackerApp.swift; sourceTree = "<group>"; };
-		2E6600622A7D9F4D00653AA2 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
+		2E6600622A7D9F4D00653AA2 /* MainView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainView.swift; sourceTree = "<group>"; };
 		2E6600642A7D9F4E00653AA2 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		2E6600672A7D9F4E00653AA2 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		2E6600692A7D9F4E00653AA2 /* Persistence.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Persistence.swift; sourceTree = "<group>"; };
@@ -79,7 +81,7 @@
 				2E66008A2A7E0E0A00653AA2 /* Extentions+ Device.swift */,
 				2E6600762A7DA1DA00653AA2 /* UI */,
 				2E6600602A7D9F4D00653AA2 /* ToolTrackerApp.swift */,
-				2E6600622A7D9F4D00653AA2 /* ContentView.swift */,
+				2E6600622A7D9F4D00653AA2 /* MainView.swift */,
 				2E6600642A7D9F4E00653AA2 /* Assets.xcassets */,
 				2E6600692A7D9F4E00653AA2 /* Persistence.swift */,
 				2E66006E2A7D9F4E00653AA2 /* Info.plist */,
@@ -124,6 +126,7 @@
 				2E66007E2A7DC42800653AA2 /* ListView.swift */,
 				2E6600822A7DF1A500653AA2 /* ListViewRow.swift */,
 				2E6600862A7DFABC00653AA2 /* NewItemView.swift */,
+				2E57ABE82A8B165200D7DEDE /* AddDetails.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -219,10 +222,11 @@
 			buildActionMask = 2147483647;
 			files = (
 				2E6600892A7DFDE900653AA2 /* NewItemViewModel.swift in Sources */,
+				2E57ABE92A8B165200D7DEDE /* AddDetails.swift in Sources */,
 				2E66007F2A7DC42800653AA2 /* ListView.swift in Sources */,
 				2E6600872A7DFABC00653AA2 /* NewItemView.swift in Sources */,
 				2E66006A2A7D9F4E00653AA2 /* Persistence.swift in Sources */,
-				2E6600632A7D9F4D00653AA2 /* ContentView.swift in Sources */,
+				2E6600632A7D9F4D00653AA2 /* MainView.swift in Sources */,
 				2E66007D2A7DB94700653AA2 /* ActionBoxes.swift in Sources */,
 				2E6600812A7DD1DD00653AA2 /* HomepageViewModel.swift in Sources */,
 				2E66007B2A7DAA8000653AA2 /* HomepageHeader.swift in Sources */,

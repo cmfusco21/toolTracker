@@ -11,7 +11,8 @@ import SwiftUI
 
 struct Homepage: View {
     @Environment(\.managedObjectContext) private var viewContext
-
+    @Environment(\.dismiss) var dismiss
+    
     @FetchRequest(
         sortDescriptors: [NSSortDescriptor(keyPath: \Item.datePurchases, ascending: true)],
         animation: .default)
@@ -52,7 +53,11 @@ struct Homepage: View {
             }
             .padding(8)
             .sheet(isPresented: $showAddSheet) {
-                NewItemView()
+                NavigationView {
+                    NewItemView()
+                        .navigationTitle("Add New Tools")
+                        .navigationBarTitleDisplayMode(.inline)
+                }
             }
         }
         

@@ -14,16 +14,17 @@ struct DescriptionView: View {
     @State var purashedDate = Date()
     
         var body: some View {
-            VStack {
-                Text(toolBrand)
-                Text(toolType)
-                Text(String(toolType))
-                if currentlyOwned {
-                Text(String(purashedDate.formatted(date: .abbreviated, time: .omitted)))
-                     }
-            }
+            
+                VStack {
+                    Text(toolBrand)
+                    Text(toolType)
+                    if currentlyOwned {
+                        Text(String(purashedDate.formatted(date: .abbreviated, time: .omitted)))
+                    }
+                }
                 .navigationTitle("Tool Description")
-              
+                .navigationBarTitleDisplayMode(.inline)
+                .navigationBarItems(trailing: Button("Edit", action: {}))
     }
 }
 

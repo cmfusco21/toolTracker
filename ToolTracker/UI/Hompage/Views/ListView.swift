@@ -11,7 +11,7 @@ struct ListView: View {
     @Environment(\.managedObjectContext) private var viewContext
     
     @FetchRequest(
-        sortDescriptors: [NSSortDescriptor(keyPath: \Item.datePurchases, ascending: true)],
+        sortDescriptors: [NSSortDescriptor(keyPath: \Item.brand, ascending: true)],
         animation: .default)
     var items: FetchedResults<Item>
     var viewModel = NewItemViewModel()
